@@ -22,8 +22,15 @@ const Header = () => {
       w={["360px", "460px", "1366px"]}
       h={["60px", "80px", "93px"]}
     >
-      <Box w={103} h={45}>
-        <Img src={logo} />
+      <Box>
+        <Img
+          src={logo}
+          srcSet="img/bx-logo@2x.png 2x,
+             img/bx-logo@3x.png 3x"
+          w={103}
+          h={45}
+          objectFit="contain"
+        />
       </Box>
     </HStack>
   );
