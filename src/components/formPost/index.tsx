@@ -4,6 +4,7 @@ import {
   Image as ImgChakra,
   Input,
   Textarea,
+  Text,
   Box,
   VStack,
 } from "@chakra-ui/react";
@@ -31,6 +32,7 @@ const FormPost = () => {
           borderRadius="50%"
           mb={10}
           objectFit="cover"
+          fontFamily="SFProDisplay-Black"
         />
         <Box
           display="flex"
@@ -62,6 +64,8 @@ const FormPost = () => {
             fontSize={14}
           />
         </Box>
+        <Text>FORM</Text>
+        <Text fontFamily="SFProDisplay-Black">FROM</Text>
       </VStack>
     </FormControl>
   );

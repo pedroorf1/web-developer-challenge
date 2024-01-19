@@ -7,4 +7,16 @@ body{
   font-family: 'SFProDisplay-Black';
   src: local('SFProDisplay-Black'), url('./assets/fonts/SFProDisplay/SFPRODISPLAYBOLD.OTF') format('opentype');
 }
+@font-face {
+  font-family: 'SFProDisplay';
+  src: local('SFProDisplay'), url('./assets/fonts/SFProDisplay/SFPRODISPLAYREGULAR.OTF') format('opentype');
+}
+@font-face {
+  font-family: 'SFProDisplay-Medium';
+  src: local('SFProDisplay-Medium'), url('./assets/fonts/SFProDisplay/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+}
+@font-face {
+  font-family: 'SFProDisplay-Black-italic';
+  src: local('SFProDisplay-Black-italic'), url('./assets/fonts/SFProDisplay/SFPRODISPLAYBLACKITALIC.OTF') format('opentype');
+}
 

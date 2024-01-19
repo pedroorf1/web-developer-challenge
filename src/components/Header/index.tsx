@@ -3,7 +3,7 @@ import { Img, Box, HStack, Text } from "@chakra-ui/react";
 
 const Header = () => {
   const [logo, setLogo] = React.useState<string | null>(null);
-  const Logo = "/assets/imgs/system/bx-logo.svg";
+  const Logo = "/assets/imgs/system/bx-logo@3x.png";
   React.useMemo(() => {
     console.log("ttt", typeof Img);
     setLogo(Logo);
@@ -23,14 +23,7 @@ const Header = () => {
       h={["60px", "80px", "93px"]}
     >
       <Box>
-        <Img
-          src={logo}
-          srcSet="img/bx-logo@2x.png 2x,
-             img/bx-logo@3x.png 3x"
-          w={103}
-          h={45}
-          objectFit="contain"
-        />
+        <Img src={logo} w={103} h={45} objectFit="contain" />
       </Box>
     </HStack>
   );
