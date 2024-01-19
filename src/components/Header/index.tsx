@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, Box, HStack, Text } from "@chakra-ui/react";
+import { Img, Box, HStack } from "@chakra-ui/react";
 
 const Header = () => {
   const [logo, setLogo] = React.useState<string | null>(null);

@@ -4,7 +4,7 @@ import {
   Image as ImgChakra,
   Input,
   Textarea,
-  Text,
+  Button,
   Box,
   VStack,
 } from "@chakra-ui/react";
@@ -64,8 +64,23 @@ const FormPost = () => {
             fontSize={14}
           />
         </Box>
-        <Text>FORM</Text>
-        <Text fontFamily="SFProDisplay-Black">FROM</Text>
+        <Box
+          w={["380px", "490px"]}
+          display="flex"
+          flexDirection="row"
+          justifyContent="right"
+          alignItems="right"
+          bg="red"
+          gap={10}
+          mt={32}
+        >
+          <Button variant="link" w={98} h={41}>
+            Descartar
+          </Button>
+          <Button colorScheme="whatsapp" w={98} h={41}>
+            Publicar
+          </Button>
+        </Box>
       </VStack>
     </FormControl>
   );
