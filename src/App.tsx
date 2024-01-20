@@ -5,13 +5,16 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Header from "./components/Header";
 import FormPost from "./components/formPost";
+import Feed from "./components/feed";
 config.autoAddCss = false;
 
 function App() {
   return (
-    <VStack w="100%" p={0} m={0}>
-      <Container
-        w={["360px", "460px", "1366px"]}
+    <VStack>
+      <Box
+        display="flex"
+        w={["100%", "460px", "1366px"]}
+        flexDirection="column"
         justifyContent="center"
         alignItems="center"
         textAlign="center"
@@ -29,8 +32,9 @@ function App() {
           textAlign="center"
         >
           <FormPost />
+          <Feed />
         </Box>
-      </Container>
+      </Box>
     </VStack>
   );
 }

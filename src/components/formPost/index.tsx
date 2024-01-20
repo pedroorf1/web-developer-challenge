@@ -18,21 +18,14 @@ const FormPost = () => {
     return <></>;
   }
   return (
-    <FormControl
-      w={["360px", "516px"]}
-      m="40px 425px 56px"
-      bg="#3b3b3b"
-      p={24}
-      borderRadius={3}
-    >
+    <FormControl w={["360px", "516px"]} mt="40px" bg="#2B2B2B" borderRadius={3}>
       <VStack>
         <ImgChakra
           src={img}
           boxSize="88px"
           borderRadius="50%"
-          mb={10}
+          mt="24px"
           objectFit="cover"
-          fontFamily="SFProDisplay-Black"
         />
         <Box
           display="flex"
@@ -40,39 +33,47 @@ const FormPost = () => {
           justifyContent="center"
           alignItems="center"
           textAlign="center"
+          p={0}
+          m={0}
         >
           <Input
             type="text"
             placeholder="nome"
-            p={10}
-            borderRadius={8}
+            p={["12px", "16px"]}
+            borderRadius="8px"
             bg="#494949"
             size="xs"
             w={["360px", "468px"]}
             h="40px"
+            mt="16px"
+            mb="8px"
             fontSize={14}
           />
           <Textarea
             placeholder="texto"
-            borderRadius={8}
+            borderRadius="8px"
+            overflowY="auto"
             bg="#494949"
-            p={10}
-            mt={10}
+            p={["12px", "16px"]}
+            fontSize={14}
             size="xs"
             w={["360px", "468px"]}
-            h="56px"
-            fontSize={14}
+            minH="80px"
+            sx={{
+              "::-webkit-scrollbar": {
+                display: "none",
+              },
+            }}
           />
         </Box>
         <Box
-          w={["380px", "490px"]}
+          w={["380px", "460px"]}
+          mt="32px"
           display="flex"
           flexDirection="row"
           justifyContent="right"
           alignItems="right"
-          bg="red"
-          gap={10}
-          mt={32}
+          pb="24px"
         >
           <Button variant="link" w={98} h={41}>
             Descartar
