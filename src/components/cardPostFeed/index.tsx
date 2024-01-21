@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removePost } from "../../store/reducers/posts";
 import { Text, Box, VStack, Button, Image, HStack } from "@chakra-ui/react";
 import imgIconDelete from "../../assets/imgs/icons/delete@3x.png";
 
@@ -6,9 +8,17 @@ type CardPostFeedProps = {
   author: string;
   post: string;
   image: string;
+  id: string;
 };
 
-const CardPostFeed = ({ author, post, image }: CardPostFeedProps) => {
+const CardPostFeed = ({ author, post, image, id }: CardPostFeedProps) => {
+  const dispatch = useDispatch();
+
+  const handleDeletePost = () => {
+    dispatch(removePost(id));
+    alert("Post deletado com sucesso!" + id);
+  };
+
   return (
     <Box w={["360px", "516px"]} m={0} mt="8px" bg="#2B2B2B" p={0} mb="16px">
       <Box justifyContent="right" w="100%" display="flex" flex-direction="row">
@@ -19,6 +29,8 @@ const CardPostFeed = ({ author, post, image }: CardPostFeedProps) => {
           alt="excluir post"
           mr="12px"
           mt="12px"
+          _hover={{ cursor: "pointer", backgroundColor: "#494949" }}
+          onClick={handleDeletePost}
         />
       </Box>
       <Box p={7} display="flex" flex-direction="row" position="relative">
@@ -33,7 +45,13 @@ const CardPostFeed = ({ author, post, image }: CardPostFeedProps) => {
           />
         </Box>
         <Box p={2}>
-          <Text color="#9f9f9f" fontSize="16px" textAlign="left" ml={2}>
+          <Text
+            color="#9f9f9f"
+            fontSize="16px"
+            textAlign="left"
+            ml={2}
+            w="330px"
+          >
             {post}
           </Text>
           <Text
