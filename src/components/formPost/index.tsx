@@ -6,6 +6,8 @@ import {
   FormControl,
   Image as ImgChakra,
   Input,
+  Img,
+  FormLabel,
   Textarea,
   Button,
   Box,
@@ -13,68 +15,116 @@ import {
 } from "@chakra-ui/react";
 
 import trashImg from "../../assets/imgs/icons/trash@3x.png";
-
-type Posts = { id: string; message: string; img: string; author: string }[];
+import userDefaultPerfilImg from "../../assets/imgs/userDefaultPerfilImg.png";
 
 const FormPost = () => {
+  const [isChangingImg, setIsChanginImg] = React.useState<boolean>(false);
   const dispatch = useDispatch();
-  const posts: Posts = useSelector((state: any) => state.feed.posts);
   const [img, setImg] = React.useState<string | null>(null);
 
   const getMessage = React.useRef<HTMLTextAreaElement>(null);
   const getImg = React.useRef<HTMLImageElement>(null);
   const getAuthor = React.useRef<HTMLInputElement>(null);
 
-  React.useMemo(() => {
-    setImg("/assets/imgs/perfil/06.jpeg");
-  }, [img]);
-  if (!img) {
-    return <></>;
-  }
-
-  const dataPost = {
-    id: uuidV1(),
-    message: getMessage.current?.value,
-    img: getImg.current?.src,
-    author: getAuthor.current?.value,
-  };
+  const changeImgInput = React.useRef<HTMLInputElement>(null);
 
   const handlePublic = () => {
+    const dataPost = {
+      id: uuidV1(),
+      message: getMessage.current?.value,
+      img: getImg.current?.src,
+      author: getAuthor.current?.value,
+    };
+
     dispatch(addPost(dataPost));
-    return alert("publicar");
+    return alert("Postado com sucesso!");
   };
   const clearPublic = () => {
-    return alert("limpar publicar");
+    setImg(null);
+    if (getMessage?.current?.value != null) {
+      getMessage.current.value = "";
+    }
+    if (getAuthor?.current?.value != null) {
+      getAuthor.current.value = "";
+    }
+    return;
   };
   const clearImg = () => {
-    return alert("limpar imagem");
+    return setImg(null);
   };
   const changeImg = () => {
-    return alert("mudar imagem");
+    if (
+      changeImgInput.current?.value !== "" &&
+      changeImgInput.current?.value !== null &&
+      changeImgInput.current?.value !== undefined
+    ) {
+      setImg(changeImgInput.current?.value);
+      toogleAddImage();
+    } else {
+      return alert("url da imagem invalida");
+    }
+  };
+  const toogleAddImage = () => {
+    return setIsChanginImg(!isChangingImg);
   };
 
   return (
     <FormControl w={["360px", "516px"]} mt="40px" bg="#2B2B2B" borderRadius={3}>
       <VStack>
-        <ImgChakra
-          src={img}
-          boxSize="88px"
-          borderRadius="50%"
-          mt="24px"
-          objectFit="cover"
-          _hover={{ cursor: "pointer" }}
-          onClick={changeImg}
-          ref={getImg}
-        />
-        <ImgChakra
-          src={trashImg}
-          boxSize="24px"
-          position="relative"
-          top="-60px"
-          right="-70px"
-          _hover={{ cursor: "pointer", backgroundColor: "#494949" }}
-          onClick={clearImg}
-        />
+        {!isChangingImg ? (
+          <Box>
+            <Img
+              loading="eager"
+              src={img == null ? userDefaultPerfilImg : img}
+              boxSize="88px"
+              borderRadius="50%"
+              mt="24px"
+              objectFit="cover"
+              _hover={{ cursor: "pointer" }}
+              onClick={toogleAddImage}
+              ref={getImg}
+              alt="Click para mudar a imagem do post"
+            />
+            <ImgChakra
+              src={trashImg}
+              boxSize="24px"
+              position="relative"
+              top="-60px"
+              right="-100px"
+              _hover={{ cursor: "pointer", backgroundColor: "#494949" }}
+              onClick={clearImg}
+            />
+          </Box>
+        ) : (
+          <Box>
+            <FormLabel
+              htmlFor="urlimg"
+              color="#7a7a7a"
+              mt={10}
+              mb={5}
+              ml={6}
+              w="100%"
+            >
+              Adicione a url da imagem no campo
+            </FormLabel>
+            <Input
+              type="text"
+              id="urlimg"
+              borderRadius="8px"
+              placeholder="url da imagem"
+              ref={changeImgInput}
+              color={"#fff"}
+              bg="#494949"
+              size="xs"
+              fontSize={14}
+              p={["12px", "16px"]}
+              w={["360px", "468px"]}
+            />
+            <Button colorScheme="whatsapp" onClick={changeImg} p={5} m={5}>
+              Mudar imagem
+            </Button>
+          </Box>
+        )}
         <Box
           display="flex"
           flexDirection="column"

@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removePost } from "../../store/reducers/posts";
-import { Text, Box, VStack, Button, Image, HStack } from "@chakra-ui/react";
+import { Text, Box, Img, Image } from "@chakra-ui/react";
 import imgIconDelete from "../../assets/imgs/icons/delete@3x.png";
+
+import userDefaultPerfilImg from "../../assets/imgs/userDefaultPerfilImg.png";
 
 type CardPostFeedProps = {
   author: string;
@@ -12,6 +14,7 @@ type CardPostFeedProps = {
 };
 
 const CardPostFeed = ({ author, post, image, id }: CardPostFeedProps) => {
+  const [img, setImg] = React.useState<string | null>(null);
   const dispatch = useDispatch();
 
   const handleDeletePost = () => {
@@ -19,10 +22,15 @@ const CardPostFeed = ({ author, post, image, id }: CardPostFeedProps) => {
     alert("Post deletado com sucesso!" + id);
   };
 
+  React.useEffect(() => {
+    setImg(image);
+  }, [image]);
+
   return (
     <Box w={["360px", "516px"]} m={0} mt="8px" bg="#2B2B2B" p={0} mb="16px">
       <Box justifyContent="right" w="100%" display="flex" flex-direction="row">
-        <Image
+        <Img
+          loading="eager"
           src={imgIconDelete}
           w="20px"
           h="20px"
@@ -36,7 +44,7 @@ const CardPostFeed = ({ author, post, image, id }: CardPostFeedProps) => {
       <Box p={7} display="flex" flex-direction="row" position="relative">
         <Box w="300px" maxH="100px">
           <Image
-            src={image}
+            src={img ? img : userDefaultPerfilImg}
             w="88px"
             h="88px"
             objectFit="cover"
