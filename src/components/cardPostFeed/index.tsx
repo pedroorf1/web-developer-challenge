@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removePost } from "../../store/reducers/posts";
 import { Text, Box, Img, Image } from "@chakra-ui/react";
 import imgIconDelete from "../../assets/imgs/icons/delete@3x.png";

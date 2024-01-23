@@ -69,8 +69,14 @@ const FormPost = () => {
   };
 
   return (
-    <FormControl w={["360px", "516px"]} mt="40px" bg="#2B2B2B" borderRadius={3}>
-      <VStack>
+    <FormControl w="516px" mt="40px" bg="#2B2B2B" borderRadius={3}>
+      <VStack
+        style={{
+          minHeight: "400px",
+          padding: 0,
+          margin: 0,
+        }}
+      >
         {!isChangingImg ? (
           <Box>
             <Img
@@ -118,7 +124,7 @@ const FormPost = () => {
               size="xs"
               fontSize={14}
               p={["12px", "16px"]}
-              w={["360px", "468px"]}
+              w="468px"
             />
             <Button colorScheme="whatsapp" onClick={changeImg} p={5} m={5}>
               Mudar imagem
@@ -141,7 +147,7 @@ const FormPost = () => {
             borderRadius="8px"
             bg="#494949"
             size="xs"
-            w={["360px", "468px"]}
+            w="468px"
             h="40px"
             mt="16px"
             mb="8px"
@@ -156,7 +162,7 @@ const FormPost = () => {
             p={["12px", "16px"]}
             fontSize={14}
             size="xs"
-            w={["360px", "468px"]}
+            w="468px"
             minH="80px"
             sx={{
               "::-webkit-scrollbar": {

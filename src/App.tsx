@@ -10,10 +10,10 @@ config.autoAddCss = false;
 
 function App() {
   return (
-    <VStack>
+    <VStack style={{ height: "360px", padding: 0, margin: 0 }}>
       <Box
         display="flex"
-        w={["100%", "460px", "1366px"]}
+        w={["100%", "100%", "100%", "1366px"]}
         flexDirection="column"
         justifyContent="center"
         alignItems="center"

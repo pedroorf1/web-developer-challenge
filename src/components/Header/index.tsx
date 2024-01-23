@@ -17,9 +17,11 @@ const Header = () => {
     <HStack
       bg="#2B2B2B"
       justifyContent="center"
+      alignContent="center"
+      alignItems="center"
       m={0}
       p={0}
-      w={["360px", "460px", "1366px"]}
+      w="100%"
       h={["60px", "80px", "93px"]}
     >
       <Box>
