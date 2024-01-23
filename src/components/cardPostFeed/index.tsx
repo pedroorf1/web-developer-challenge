@@ -20,7 +20,7 @@ const CardPostFeed = ({ author, post, image, id }: CardPostFeedProps) => {
 
   const handleDeletePost = () => {
     dispatch(removePost(id));
-    alert("Post deletado com sucesso!" + id);
+    alert("Post deletado com sucesso!");
   };
 
   React.useEffect(() => {
