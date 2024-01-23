@@ -1,7 +1,8 @@
 import React from "react";
+import parser from "html-react-parser";
 import { useDispatch } from "react-redux";
 import { removePost } from "../../store/reducers/posts";
-import { Text, Box, Img, Image } from "@chakra-ui/react";
+import { Text, Box, Img, Image, Avatar } from "@chakra-ui/react";
 import imgIconDelete from "../../assets/imgs/icons/delete@3x.png";
 
 import userDefaultPerfilImg from "../../assets/imgs/userDefaultPerfilImg.png";
@@ -42,25 +43,23 @@ const CardPostFeed = ({ author, post, image, id }: CardPostFeedProps) => {
         />
       </Box>
       <Box p={7} display="flex" flex-direction="row" position="relative">
-        <Box w="300px" maxH="100px">
-          <Image
+        <Box w="300px" maxH="90px">
+          <Avatar
             src={img ? img : userDefaultPerfilImg}
             w="88px"
             h="88px"
-            objectFit="cover"
-            borderRadius="50%"
-            bg="red"
+            name={author}
           />
         </Box>
         <Box p={2}>
           <Text
             color="#9f9f9f"
             fontSize="16px"
-            textAlign="left"
+            textAlign="justify"
             ml={2}
             w="330px"
           >
-            {post}
+            {parser(post)}
           </Text>
           <Text
             color="#5f5f5f"

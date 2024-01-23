@@ -80,6 +80,7 @@ const FormPost = () => {
         {!isChangingImg ? (
           <Box>
             <Img
+              alt="Click para mudar a imagem do post"
               loading="eager"
               src={img == null ? userDefaultPerfilImg : img}
               boxSize="88px"
@@ -89,7 +90,6 @@ const FormPost = () => {
               _hover={{ cursor: "pointer" }}
               onClick={toogleAddImage}
               ref={getImg}
-              alt="Click para mudar a imagem do post"
             />
             <ImgChakra
               src={trashImg}
