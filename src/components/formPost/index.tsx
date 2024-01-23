@@ -1,17 +1,19 @@
 import React from "react";
 import { v1 as uuidV1 } from "uuid";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addPost } from "../../store/reducers/posts";
 import {
   FormControl,
   Image as ImgChakra,
   Input,
   Img,
+  Text,
   FormLabel,
   Textarea,
   Button,
   Box,
   VStack,
+  HStack,
 } from "@chakra-ui/react";
 
 import trashImg from "../../assets/imgs/icons/trash@3x.png";
@@ -64,6 +66,9 @@ const FormPost = () => {
       return alert("url da imagem invalida");
     }
   };
+  const backImgAvatar = () => {
+    toogleAddImage();
+  };
   const toogleAddImage = () => {
     return setIsChanginImg(!isChangingImg);
   };
@@ -91,6 +96,20 @@ const FormPost = () => {
               onClick={toogleAddImage}
               ref={getImg}
             />
+            <Text
+              color="#494949"
+              fontSize="10px"
+              fontWeight="bold"
+              position="relative"
+              top="-50px"
+              bg="#eee"
+              w="97%"
+              m="0 auto"
+              _hover={{ cursor: "pointer", backgroundColor: "#aaa" }}
+              onClick={toogleAddImage}
+            >
+              Change image
+            </Text>
             <ImgChakra
               src={trashImg}
               boxSize="24px"
@@ -126,9 +145,26 @@ const FormPost = () => {
               p={["12px", "16px"]}
               w="468px"
             />
-            <Button colorScheme="whatsapp" onClick={changeImg} p={5} m={5}>
-              Mudar imagem
-            </Button>
+            <HStack justifyContent="right">
+              <Button
+                variant="link"
+                onClick={backImgAvatar}
+                p={5}
+                m={5}
+                mr="-13px"
+              >
+                Voltar
+              </Button>
+              <Button
+                colorScheme="whatsapp"
+                onClick={changeImg}
+                p={5}
+                m={5}
+                ml="0"
+              >
+                Mudar imagem
+              </Button>
+            </HStack>
           </Box>
         )}
         <Box
